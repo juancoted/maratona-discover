@@ -121,9 +121,14 @@ const DOM = {
 const Utils = {
     formatAmount(value){
         //value = Number(value.replace(\,\./g, " ")) * 100 OU
-        value = Number(value) * 100
         
-        return value 
+        /*
+        *Adicionado a correção do pequeno bug que fazia alguns números (como o 0.56)  fica um resultado bizarro (como 56.000.000).
+        *Para resolver vou usado o Math.round() por volta do value que irá arredondar  o número  que foi passado  com argumento
+        */
+        value = value * 100
+        
+        return Math.round(value) 
     },
 
     formatDate(date){
